@@ -1,0 +1,367 @@
+@font-face {
+  font-family: "museo";
+  src: url("https://use.typekit.net/af/02218c/000000000000000000011b27/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&amp;fvd=n9&amp;v=3")
+      format("woff2"),
+    url("https://use.typekit.net/af/02218c/000000000000000000011b27/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&amp;fvd=n9&amp;v=3")
+      format("woff"),
+    url("https://use.typekit.net/af/02218c/000000000000000000011b27/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&amp;fvd=n9&amp;v=3")
+      format("opentype");
+  font-display: auto;
+  font-style: normal;
+  font-weight: 900;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#wrapper {
+  width: 100%;
+  height: 100vh;
+  background-image: url(../images/bkg.jpg);
+  background-color: #000;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+#wheel {
+  position: relative;
+  top: 3vw;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 29%;
+  padding-top: 29%;
+  border-radius: 50%;
+  background: url(../images/ring-lights-off.png);
+  background-size: cover;
+}
+#wheel:hover {
+  background: url(../images/ring-lights-on.png);
+  background-size: cover;
+}
+
+#wheel > img {
+  width: 100%;
+  height: 100%;
+}
+
+#pointer {
+  position: absolute;
+  top: 0.3vh;
+  left: 50%;
+  z-index: 10;
+  /* transform: translateX(-50%); */
+  transform-origin: 50% 18px;
+  width: 14%;
+}
+#pointer img {
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+}
+.sWheel-marker {
+  opacity: 0;
+  display: none;
+}
+#pointer.sWheel-marker {
+  display: block;
+  opacity: 1;
+  /* transform-origin: 50% 18px; */
+  transform: translateX(-50%);
+}
+.rtt {
+  margin-left: -6%;
+}
+
+#spin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 10;
+  transform: translate(-50%, -50%);
+  width: 42%;
+  cursor: pointer;
+}
+#spin img {
+  width: 100%;
+  height: 100%;
+}
+#spin .btn-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40%;
+  font-family: museo, serif;
+  font-size: 1.9rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  color: #000;
+}
+
+#inner-wheel {
+  position: absolute;
+  top: 3%;
+  left: 3%;
+  width: 90%;
+  transform: translate(-16px, -75px) scale(0.9);
+}
+
+.sec {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  height: 46%;
+}
+.sec img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.sWheel-title > img {
+  transform: scale(2.6) rotate(90deg) translate(0px, 13px);
+}
+.sWheel-title:nth-child(1) > img {
+  transform: scale(2.6) rotate(90deg) translate(0px, 16px);
+}
+.sWheel-title:nth-child(2) > img {
+  transform: scale(2.6) rotate(90deg) translate(3px, 11px);
+}
+.sWheel-title:nth-child(3) > img {
+  transform: scale(2.6) rotate(90deg) translate(2px, 10px);
+}
+.sWheel-title:nth-child(4) > img {
+  transform: scale(2.6) rotate(90deg) translate(0px, 9px);
+}
+.sWheel-title:nth-child(5) > img {
+  transform: scale(2.6) rotate(90deg) translate(0px, 14px);
+}
+.sWheel-title:nth-child(6) > img {
+  transform: scale(2.6) rotate(90deg) translate(0px, 10px);
+}
+.sWheel-title:nth-child(7) > img {
+  transform: scale(2.6) rotate(90deg) translate(0px, 15px);
+}
+.sWheel-title:nth-child(8) > img {
+  transform: scale(2.6) rotate(90deg) translate(0px, 11px);
+}
+.sWheel-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.coins {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  z-index: 20;
+  width: 100%;
+}
+.coins img {
+  width: 100%;
+  height: auto;
+}
+.img {
+  position: absolute;
+  top: -40vw;
+  left: 50%;
+  z-index: 21;
+  transform: translateX(-50%);
+  width: 30%;
+  transition: 0.4s;
+}
+.img img {
+  width: 100%;
+  height: auto;
+  cursor: pointer;
+}
+.show {
+  top: -9vw;
+  left: 50%;
+}
+
+.startSpin {
+  animation-name: startSpin;
+  animation-duration: 0.05s;
+  animation-iteration-count: 2;
+}
+
+@keyframes startSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  33% {
+    transform: rotate(8deg);
+  }
+  66% {
+    transform: rotate(-8deg);
+  }
+}
+
+.spinning {
+  animation: fontColor 2s linear infinite;
+}
+
+.spinning-wheel {
+  animation: spinningWheel 2s linear;
+}
+@keyframes spinningWheel {
+  0% {
+    transform: rotate(0deg);
+  }
+  33% {
+    transform: rotate(-2deg);
+  }
+  66% {
+    transform: rotate(1deg);
+  }
+}
+
+.rtt {
+  animation: rotatePointer 0.2s linear;
+}
+@keyframes rotatePointer {
+  0% {
+    transform-origin: 50% 18px;
+    transform: rotate(0deg);
+  }
+  100% {
+    transform-origin: 50% 18px;
+    transform: rotate(-50deg);
+  }
+}
+
+@keyframes fontColor {
+  0% {
+    color: #000000;
+  }
+  75% {
+    color: #00000008;
+  }
+  100% {
+    color: #000000;
+  }
+}
+
+@media screen and (max-width: 1600px) {
+  #inner-wheel {
+    transform: translate(-14px, -72px) scale(0.92);
+  }
+}
+@media screen and (max-width: 1450px) {
+  #inner-wheel {
+    transform: translate(-14px, -72px) scale(0.93);
+  }
+}
+@media screen and (max-width: 1300px) {
+  #inner-wheel {
+    transform: translate(-13px, -72px) scale(0.94);
+  }
+  .btn-text {
+    width: 30% !important;
+    font-size: 24px !important;
+  }
+}
+@media screen and (max-width: 1200px) {
+  #inner-wheel {
+    transform: translate(-13px, -71px) scale(0.96);
+  }
+  .btn-text {
+    width: 30% !important;
+    font-size: 24px !important;
+  }
+}
+@media screen and (max-width: 1150px) {
+  #inner-wheel {
+    transform: translate(-11px, -71px) scale(0.97);
+  }
+  .btn-text {
+    width: 30% !important;
+    font-size: 24px !important;
+  }
+}
+@media screen and (max-width: 1000px) {
+  #inner-wheel {
+    transform: translate(-10px, -68px) scale(1.03);
+  }
+  .btn-text {
+    width: 30% !important;
+    font-size: 20px !important;
+  }
+}
+@media screen and (max-width: 850px) {
+  #inner-wheel {
+    transform: translate(-9px, -68px) scale(1.04);
+  }
+  .btn-text {
+    width: 30% !important;
+    font-size: 16px !important;
+  }
+}
+
+@media screen and (max-width: 715px) {
+  body {
+    overflow: hidden;
+  }
+  #wrapper {
+    background-image: url(../images/bkg-mobile.jpg);
+  }
+  #wheel {
+    top: 15vw;
+    width: 78%;
+    padding-top: 78%;
+  }
+  #inner-wheel {
+    transform: translate(-14px, -72px) scale(0.92);
+  }
+  .btn-text {
+    width: 40%;
+    font-size: 30px !important;
+  }
+  .img {
+    position: absolute;
+    top: -60vw;
+    left: 50%;
+    z-index: 21;
+    transform: translateX(-50%);
+    width: 80%;
+    transition: 0.4s;
+  }
+  .show {
+    top: -16vw;
+    left: 50%;
+  }
+  .coins {
+    position: absolute;
+    top: -71px;
+    left: -50%;
+    z-index: 20;
+    width: 200%;
+    transform: translateX(0%);
+  }
+  .rtt {
+    margin-left: -6vw;
+  }
+}
+@media screen and (max-width: 500px) {
+  #inner-wheel {
+    transform: translate(-14px, -72px) scale(0.94);
+  }
+  .btn-text {
+    width: 30% !important;
+    font-size: 20px !important;
+  }
+}
+@media screen and (max-width: 350px) {
+  #inner-wheel {
+    transform: translate(-10px, -68px) scale(1);
+  }
+  .btn-text {
+    width: 40%;
+    font-size: 14px !important;
+  }
+}
