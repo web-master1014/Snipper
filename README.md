@@ -1,3 +1,3 @@
 # Snipper
 ##preview
-![(./preview.png)]
+![(./preview2.png)]
